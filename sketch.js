@@ -1,36 +1,42 @@
-var balloons[];
+var balloons = [];
 
 function setup() {
   createCanvas(750, 500);
   background(0);
 
-  for(var i = 0; i < 50; i++) {
-     var x = random(0, 750);
-     var y = random(0, 250);
-     var d = random(20, 75);
-     balloons[i] = new Balloon(x, y, d);
-  }
+  for(var i = 0; i < 100; i++) {
+     var x = random(-750, 750);
+     var y = random(0, 375);
+     var w = random(100, 125);
+     var h = 75;
+     balloons[i] = new Balloon(x, y, w, h);
+  };
 }
 
 function draw() {
+
+background(0, 191, 243);
+
   for(var i = 0; i < balloons.length; i++) {
     balloons[i].move();
     balloons[i].display();
   }
 }
 
-function Balloon(tempX, tempY, tempDiameter) {
+
+function Balloon(tempX, tempY, tempWidth, tempHeight) {
   this.x = tempX;
   this.y = tempY;
-  this.diameter = tempDiameter;
-  this.speed = 2.5;
+  this.width = tempWidth;
+  this.height = tempHeight;
+  this.speed = 0.5;
 
   this.move = function() {
-    this.y += random(-this.speed, this.speed);
-    this.x += random(-this.speed, this.speed);
+    this.x += this.speed;
   };
 
   this.display = function() {
-    ellipse(this.x, this.y, this.diameter);
+    noStroke();
+    ellipse(this.x, this.y, this.width, this.height);
   };
 }
