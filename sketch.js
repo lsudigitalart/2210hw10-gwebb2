@@ -1,4 +1,4 @@
-var balloons[];
+var balloons = [];
 
 function setup() {
   createCanvas(750, 500);
